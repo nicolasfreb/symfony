@@ -1,0 +1,63 @@
+body{
+    background-image: url("../img/fond.webp");
+    background-position: center top;
+    background-size: 100% auto;
+}
+#menu a{
+    color:white;
+}
+#content{
+    width:80%;
+    margin:0 auto;
+    display:block;
+    padding:30px;
+}
+#contenu{
+    padding:20px;
+}
+@keyframes transition1 {
+    from {
+            height:auto;
+            width:auto;
+            opacity:1;
+         }
+    30% {
+            height:auto;
+            width:auto;
+            opacity:1;
+         }
+    to {
+        opacity:0;
+        width:auto;
+        height:0;
+    }
+}
+#message{
+    overflow:hidden;
+    box-sizing:border-box;
+    position:relative;
+    opacity:1;
+    width:auto;
+    height:0;
+    animation: transition1 3s linear;
+}
+#err {
+    width:100%;
+    
+}
+#err .card-img-top{
+    width:300px;
+    height:auto;
+    
+}
+.topmarge{
+     margin-top:20px;
+     clear:both;   
+}
+
+#footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+}
