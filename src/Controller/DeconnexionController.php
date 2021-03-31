@@ -15,6 +15,8 @@ class DeconnexionController extends AbstractController
     public function deco( SessionInterface $session): Response
     {
         $session->remove('user');
+        $session->remove('acces');
+        $session->remove('userId');
         $this->addFlash(
             'notice',
             'Vous avez été déconnecté'

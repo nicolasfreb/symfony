@@ -1,0 +1,48 @@
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+     <link href="{{ asset('css/connexion.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block content %}
+    <div class="card2 card border-0 px-4 py-5">
+       <h1>Utilisateur {{ user.login }}</h1>
+       <div class="card2 card border-0 px-4 py-5">
+        <form method="post" action="/user/{{ user.id }}">
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">login</h6>
+                </label> 
+                <input class="mb-4" type="text" name="login" placeholder="Enter your login" required="required" value="{{ user.login }}"> 
+            </div>
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Email Address</h6>
+                </label> 
+                <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" required="required" value="{{ user.email }}"> 
+            </div>
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Accès</h6>
+                </label> 
+                <select  class="form-control mb-4" name="acces" value="{{ user.acces }}">
+                    <option value="Administrateur" {% if  user.acces == 'Administrateur' %} selected="selected"{% endif %}>Administrateur</option>
+                    <option value="Membre" {% if  user.acces == 'Membre' %} selected="selected"{% endif %} >Membre</option>
+                </select>
+            </div>
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Password</h6>
+                </label> 
+                <input type="password" name="password" placeholder="Enter password"> 
+                <input type="hidden" name="userId" value="{{ user.id }}"
+            </div>
+            <div class="row mb-3 px-3"> 
+                <button type="submit" class="btn btn-blue text-center">Modifier</button> 
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock %}
+

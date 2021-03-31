@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use App\Entity\Utilisateurs;
-use App\Services\Connexionbdd;
 
 class ConnexionController extends AbstractController
 {
@@ -33,7 +32,9 @@ class ConnexionController extends AbstractController
                 return $this->render('connexion.html.twig');
             }
             else{
-                $session->set('user', $utilisateur);
+                $session->set('user', $utilisateur->getLogin());
+                $session->set('acces', $utilisateur->getAcces());
+                $session->set('userId', $utilisateur->getId());
                 $this->addFlash(
                     'notice',
                     'Vous êtes maintenant connecté'

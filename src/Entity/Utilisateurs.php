@@ -32,6 +32,11 @@ class Utilisateurs
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $acces;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Utilisateurs
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getAcces(): ?string
+    {
+        return $this->acces;
+    }
+
+    public function setAcces(string $acces): self
+    {
+        $this->acces = $acces;
 
         return $this;
     }

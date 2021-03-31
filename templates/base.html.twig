@@ -27,7 +27,13 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Accueil</a>
                     </li>
-                   {% if user.login is defined %}
+                    {% if app.session.get('user') is defined and app.session.get('user') is not null %}
+                        {% if app.session.get('acces') == 'Administrateur' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">Gestion des utilisateurs</a>
+                        </li>
+
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/deconnexion">Déconnexion</a>
                         </li>

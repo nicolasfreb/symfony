@@ -1,0 +1,40 @@
+{# templates/blog/layout.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block content %}
+    <div class="card2 card border-0 px-4 py-5">
+       <h1>Liste des utilisateurs</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Acces</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.login }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.acces }}</td>
+                        <td><a  class="btn btn-primary" href="/user/{{ user.id }}">Modifier</a></td>
+                        <td>
+                            <form method="post" action="/users">
+                                <input type="hidden" name="userDelete" value="{{ user.id }}">
+                                <button class="btn btn-danger">supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+

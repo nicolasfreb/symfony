@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use App\Entity\Utilisateurs;
-use App\Services\Connexionbdd;
 
 class RegisterController extends AbstractController
 {
@@ -15,8 +14,7 @@ class RegisterController extends AbstractController
      * @Route("/register", methods={"GET","HEAD", "POST"}, name="register")
      */
     public function connexionForm(): Response
-    {
-        
+    {   
         if(!empty ($_POST['email']) and !empty ($_POST['password']) and !empty ($_POST['login'])){
 
             $user = $this->getDoctrine()->getRepository(Utilisateurs::class);
@@ -43,6 +41,7 @@ class RegisterController extends AbstractController
                 $utilisateur->setLogin($_POST['login']);
                 $utilisateur->setPassword(md5($_POST['password']));
                 $utilisateur->setEmail($_POST['email']);
+                $utilisateur->setAcces('Membre');
     
                 $entityManager->persist($utilisateur); 
                 $entityManager->flush();   
