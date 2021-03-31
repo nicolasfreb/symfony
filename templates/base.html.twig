@@ -27,13 +27,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Accueil</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/Nicolas">user</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/zooooo">404</a>
-                    </li>
-                    {% if user is defined and user != '' %}
+                   {% if user.login is defined %}
                         <li class="nav-item">
                             <a class="nav-link" href="/deconnexion">Déconnexion</a>
                         </li>

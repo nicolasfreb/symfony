@@ -3,4 +3,10 @@
 
 
 {% block title %}Accueil{% endblock %}
-{% block content %}<h1>Bienvenue {{user}}</h1>{% endblock %}
+{% block content %}
+<h1>Bienvenue 
+{% if user.login is defined %}
+    {{user.login}}
+{% endif %}
+</h1>
+{% endblock %}

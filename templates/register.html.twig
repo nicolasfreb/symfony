@@ -1,0 +1,36 @@
+{# templates/blog/layout.html.twig #}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+     <link href="{{ asset('css/connexion.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block title %}Connexion{% endblock %}
+{% block content %}
+    <div class="card2 card border-0 px-4 py-5">
+        <form method="post" action="/register">
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">login</h6>
+                </label> 
+                <input class="mb-4" type="text" name="login" placeholder="Enter your login" required="required"> 
+            </div>
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Email Address</h6>
+                </label> 
+                <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" required="required"> 
+            </div>
+            <div class="row px-3"> 
+                <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Password</h6>
+                </label> 
+                <input type="password" name="password" placeholder="Enter password" required="required"> 
+            </div>
+            <div class="row mb-3 px-3"> 
+                <button type="submit" class="btn btn-blue text-center">Creer</button> 
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
