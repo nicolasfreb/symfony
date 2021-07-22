@@ -1,6 +1,7 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Administration;
 
+use App\Services\MenusGeneral;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,10 +12,11 @@ use App\Entity\Utilisateurs;
 class UsersController extends AbstractController
 {
     /**
-     * @Route("/users", methods={"GET","HEAD", "POST"}, name="users")
+     * @Route("/Administration/users", methods={"GET","HEAD", "POST"}, name="users")
      */
-    public function connexionForm(SessionInterface $session): Response
+    public function connexionForm(SessionInterface $session,  MenusGeneral $menus): Response
     {
+        $menu = $menus->returnMenu();
         if( $session->get('acces') == 'Administrateur'){
             if(isset($_POST['userDelete'])){
                 if($_POST['userDelete'] !=  $session->get('userId')){
@@ -38,9 +40,9 @@ class UsersController extends AbstractController
                 ->findAll();
             
                 if($users){
-                    return $this->render('users/users.html.twig', ['users' => $users]);
+                    return $this->render('users/users.html.twig', ['users' => $users, 'menu' => $menu]);
                 }
-                else return $this->render('users/users.html.twig');
+                else return $this->render('users/users.html.twig', ['menu' => $menu]);
             }
         }
         else{

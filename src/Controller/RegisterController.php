@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Services\MenusGeneral;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,8 +14,9 @@ class RegisterController extends AbstractController
     /**
      * @Route("/register", methods={"GET","HEAD", "POST"}, name="register")
      */
-    public function connexionForm(): Response
-    {   
+    public function connexionForm(MenusGeneral $menus): Response
+    {
+        $menu = $menus->returnMenu();
         if(!empty ($_POST['email']) and !empty ($_POST['password']) and !empty ($_POST['login'])){
 
             $user = $this->getDoctrine()->getRepository(Utilisateurs::class);
@@ -49,14 +51,14 @@ class RegisterController extends AbstractController
                     'notice',
                     'Votre compte a été créé'
                 );
-                return $this->redirectToRoute('accueil'); 
+                return $this->redirectToRoute('accueil', ['menu' => $menu]);
             }
             else{
-                return $this->render('register.html.twig');
+                return $this->render('register.html.twig', ['menu' => $menu]);
             }
         }
         else{
-            return $this->render('register.html.twig');
+            return $this->render('register.html.twig', ['menu' => $menu]);
         }         
     }
 
