@@ -16,6 +16,6 @@ class Erreur404Controller extends AbstractController
     public function erreur(Request $request): Response
     {
         $routeParameters = $request->attributes->get('_route_params');
-        return $this->render('404.html.twig', ['url' => $routeParameters['url']]);
+        return $this->render('erreurs/404.html.twig', ['url' => $routeParameters['url']]);
     }
 }

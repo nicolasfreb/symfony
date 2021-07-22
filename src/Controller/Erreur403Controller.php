@@ -11,11 +11,11 @@ class Erreur403Controller extends AbstractController
 {
    
     /**
-     * @Route("/403" , requirements={"url"=".+"}, name="403")
+     * @Route("/403" , name="403")
      */
     public function erreur(Request $request): Response
     {
         $routeParameters = $request->attributes->get('_route_params');
-        return $this->render('403.html.twig');
+        return $this->render('erreurs/403.html.twig');
     }
 }
